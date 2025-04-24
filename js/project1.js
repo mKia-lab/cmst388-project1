@@ -1,75 +1,87 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     /* PART 1: INTRO TEXT
-    --------------------------------------------------
-    */
-
-    // TODO: Declare variables for name, age, and isStudent setting values with your own name, age, and student status.
+    -------------------------------------------------- */
     
+    // Declare variables for name, age, and isStudent
+    let name = "YourName"; // Replace with your actual name
+    let age = 21; // Replace with your actual age
+    let isStudent = true; // true or false based on your status
+
     const introduction = (name, age, isStudent) => {
+        // Set student status message
+        let studentStatus = isStudent ? "I am currently a student." : "I am not a student.";
 
-        // TODO: Check if isStudent is true or false and set text output to a new variable called studentStatus
-        // - If isStudent is true, set studentStatus to "I am currently a student."
-        // - If isStudent is false, set studentStatus to "I am not a student."
-        
-        // TODO: Using string concatenation, store a message to a new variable called message. 
-        // - The message variable should should include your name, age, and a statement about whether you are a student or not. 
-        // - Example message format: "Hello, my name is John. I am 25 years old and I am currently a student."
-    
-        // DO NOT CHANGE: The following code selects the messageDisplayArea ID in the HTML file and appends a div 
-        // tag with the message variable defined above.
+        // Concatenate message
+        let message = "Hello, my name is " + name + ". I am " + age + " years old and " + studentStatus;
+
+        // Display the message in the DOM
         const messageDisplayArea = document.getElementById('messageDisplayArea');
         const messageElement = document.createElement('div');
         messageElement.textContent = message;
         messageDisplayArea.appendChild(messageElement);
     };
-    
-    // Call the introduction function. Do not edit this line.
+
+    // Call the introduction function
     introduction(name, age, isStudent);
 
     /* PART 2: SELECTORS
-    --------------------------------------------------
-    */
-
+    -------------------------------------------------- */
+    
     document.querySelector("#add-classes").addEventListener('click', () => {
+        // Add class "first" to first item
         document.querySelector('.selector-examples li:first-child').classList.add('first');
+
+        // Add class "even" to even-numbered list items
+        document.querySelectorAll('.selector-examples li:nth-child(even)').forEach(el => el.classList.add('even'));
+
+        // Add class "odd" to odd-numbered list items
         document.querySelectorAll('.selector-examples li:nth-child(odd)').forEach(el => el.classList.add('odd'));
-        // TODO: Add remaining selectors using nth-child, loops and conditional logic where approriate. (https://www.w3schools.com/CSSref/sel_nth-child.php) 
+
+        // Add class "highlighter" to item 4 and 5
+        document.querySelector('.selector-examples li:nth-child(4)').classList.add('highlighter');
+        document.querySelector('.selector-examples li:nth-child(5)').classList.add('highlighter');
+
+        // Add class "last" to the last item
+        document.querySelector('.selector-examples li:last-child').classList.add('last');
     });
 
     /* PART 3: REPLACEMENT TEXT
-    --------------------------------------------------
-    */
-
+    -------------------------------------------------- */
+    
     document.querySelector("#change-language").addEventListener('click', () => {
-        // TODO: Add code to change the text of the currentLanguage class to the value of the newLanguage ID:
-        // - 1: Create a new variable called inputValue and set it to the value of the #newLanguage id
-        // - 2: Create a new variable called element and set it to the .currentLanguage class
-        // - 3: Using .innerHTML (https://www.w3schools.com/jsref/prop_html_innerhtml.asp), update element with inputValue
+        // Get value from input
+        let inputValue = document.querySelector("#newLanguage").value;
+
+        // Select all elements with the class currentLanguage
+        document.querySelectorAll(".currentLanguage").forEach(el => {
+            el.innerHTML = inputValue;
+        });
     });
 
     /* PART 4: TOGGLES
-    --------------------------------------------------
-    */
+    -------------------------------------------------- */
 
-    // Modifying CSS attributes
+    // Define the original box color
     let boxColor = "rgb(153, 51, 51)";
 
+    // Toggle box background color
     document.querySelector("#button_toggle_colors").addEventListener('click', () => {
         document.querySelectorAll(".box").forEach(box => {
             const currentColor = window.getComputedStyle(box).backgroundColor;
             if (currentColor === boxColor) {
-                // TODO: element backgroundColor currently has boxColor set, change it to 'white'
+                box.style.backgroundColor = "white";
             } else {
-                // TODO: element backgroundColor currently does not have boxcolor set, set it to boxColor
+                box.style.backgroundColor = boxColor;
             }
         });
     });
 
-    // Adding/Removing classes to manipulate shapes
+    // Toggle rounded edge class
     document.querySelector("#button_toggle_roundedges").addEventListener('click', () => {
         document.querySelectorAll(".box").forEach(box => {
-            // TODO: Add a toggle to box.classList and toggle the CSS 'round-edge' class
+            box.classList.toggle("round-edge");
         });
     });
+
 });
