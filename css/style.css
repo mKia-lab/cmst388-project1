@@ -67,3 +67,17 @@
 .cardinal {
     background-color: #993333;
 }
+
+.first { font-weight: bold; }
+.even { background-color: #f0f0f0; }
+.odd { background-color: #dcdcdc; }
+.highlighter { background-color: yellow; }
+.last { font-style: italic; }
+.round-edge { border-radius: 15px !important; }
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: rgb(153, 51, 51);
+  margin: 10px;
+  display: inline-block;
+}
