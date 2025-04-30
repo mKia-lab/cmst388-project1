@@ -4,14 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     --------------------------------------------------
     */
 
-    // TODO: Declare variables for name, age, and isStudent setting values with your own name, age, and student status.
+    const name = "Your Name";
+    const age = 25;
+    const isStudent = true;
+// TODO: Declare variables for name, age, and isStudent setting values with your own name, age, and student status.
     
     const introduction = (name, age, isStudent) => {
+    const studentStatus = isStudent ? "I am currently a student." : "I am not a student.";
 
         // TODO: Check if isStudent is true or false and set text output to a new variable called studentStatus
         // - If isStudent is true, set studentStatus to "I am currently a student."
         // - If isStudent is false, set studentStatus to "I am not a student."
-        
+    const message = "Hello, my name is " + name + ". I am " + age + " years old and " + studentStatus;
+
         // TODO: Using string concatenation, store a message to a new variable called message. 
         // - The message variable should should include your name, age, and a statement about whether you are a student or not. 
         // - Example message format: "Hello, my name is John. I am 25 years old and I am currently a student."
@@ -42,10 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     */
 
     document.querySelector("#change-language").addEventListener('click', () => {
-        // TODO: Add code to change the text of the currentLanguage class to the value of the newLanguage ID:
-        // - 1: Create a new variable called inputValue and set it to the value of the #newLanguage id
-        // - 2: Create a new variable called element and set it to the .currentLanguage class
-        // - 3: Using .innerHTML (https://www.w3schools.com/jsref/prop_html_innerhtml.asp), update element with inputValue
+      const inputValue = document.getElementById('newLanguage').value;
+      const elements = document.querySelectorAll('.currentLanguage');
+
+      elements.forEach(el => {
+        el.innerHTML = inputValue;
+      });
     });
 
     /* PART 4: TOGGLES
@@ -59,8 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll(".box").forEach(box => {
             const currentColor = window.getComputedStyle(box).backgroundColor;
             if (currentColor === boxColor) {
+                box.style.backgroundColor = 'white';
                 // TODO: element backgroundColor currently has boxColor set, change it to 'white'
             } else {
+                box.style.backgroundColor = boxColor;
                 // TODO: element backgroundColor currently does not have boxcolor set, set it to boxColor
             }
         });
@@ -69,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Adding/Removing classes to manipulate shapes
     document.querySelector("#button_toggle_roundedges").addEventListener('click', () => {
         document.querySelectorAll(".box").forEach(box => {
+            box.classList.toggle('round-edge');
             // TODO: Add a toggle to box.classList and toggle the CSS 'round-edge' class
         });
     });
